@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo apt install htop fastfetch yes -y
+sudo apt install htop fastfetch yes tldr -y
