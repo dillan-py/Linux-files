@@ -1,0 +1,5 @@
+#To find the name of a particular program/software/check it exits:
+sudo find / -name '*string*'
+
+#To remove all results of it
+sudo find / -name '*string*' -exec rm -rf {} +
