@@ -1,1 +1,4 @@
 cat -- "file name"
+#-- tells cat “there are no more options; everything after this is a filename.”
+
+#Then we pass the full filename in quotes, so the shell treats the spaces correctly.
