@@ -1,0 +1,12 @@
+#Refresh Repositories:
+sudo zypper refresh
+
+#List Available Updates:
+sudo zypper list-updates
+
+#View all available patches (focuses on security/bug fixes):
+sudo zypper list-patches
+
+# Patch security fixes
+zypper update
+zypper patch
