@@ -1,2 +1,7 @@
 sudo apt install rkhunter
+rkhunter --update
+rkhunter --proqupd #update database
+#System scan:
+rkhunter --check --sk
+#With logfile
 rkhunter -c --createlogfile
