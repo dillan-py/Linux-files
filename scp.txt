@@ -1,0 +1,4 @@
+scp <username>@<ip>:/remote/path/file.txt /local/path/
+# Example:
+    v - directory of host machine
+scp file.txt username@hostname:/home
