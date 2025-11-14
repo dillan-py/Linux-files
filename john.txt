@@ -1,0 +1,47 @@
+# 1. Add to john.conf
+# [Incremental:UKAll]
+# MinLen = 1
+# MaxLen = 12
+# CharCount = 95
+# CharSet = abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`¬¦!"#$%&'()*+,-./:;<=>?@[]^_{|}~£
+
+# 2. Crack MD5 (auto-detect + GPU)
+john --incremental=UKAll hash.txt
+
+# 3. Check results
+john --show hash.txt
+
+
+
+
+####
+
+
+john --status          # live progress
+john --show hash.txt   # cracked passwords
+john --restore         # resume after Ctrl+C
+
+
+
+4. GPU Version (1000x faster than CPU)
+Use John the Ripper Jumbo with OpenCL/CUDA.
+bash# Raw MD5 + GPU
+john --format=raw-md5 --incremental=UKAll --device=0 hash.txt
+
+# Or auto-detect + GPU
+john --incremental=UKAll hash.txt
+Tip: Run john --list=formats | grep -i md5 to see available GPU formats.
+
+
+C. Auto-detect (recommended)
+bashjohn --incremental=UKAll hash.txt
+
+
+# === UK English Full Keyboard (95 printable chars) ===
+[Incremental:UKAll]
+MinLen = 1
+MaxLen = 12
+CharCount = 95
+
+# Exact UK keyboard printable chars (escaped for .conf)
+CharSet = abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`¬¦!"#$%&'()*+,-./:;<=>?@[]^_{|}~£
