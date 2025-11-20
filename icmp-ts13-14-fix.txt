@@ -1,3 +1,17 @@
+######
+Risk: Low
+
+ICMP Timestamp Request Remote Date Disclosure
+Description
+The remote host answers to an ICMP timestamp request. This allows an attacker to know the date that is set on the targeted machine, which may assist an unauthenticated, remote attacker in defeating time-based authentication protocols.
+
+Timestamps returned from machines running Windows Vista / 7 / 2008 / 2008 R2 are deliberately incorrect, but usually within 1000 seconds of the actual system time.
+Solution
+Filter out the ICMP timestamp requests (13), and the outgoing ICMP timestamp replies (14).
+Output
+The difference between the local and remote clocks is 1 second.
+
+
 Recommended Fix (for Ubuntu with UFW — the default on most Ubuntu servers/desktops)
 UFW (Uncomplicated Firewall) is iptables-based and does not block ICMP timestamp by default, but it's easy to add rules by editing the configuration.
 
@@ -19,20 +33,38 @@ COMMIT
 Save and apply:Bashsudo ufw reload
 
 This fully mitigates the issue without breaking normal ICMP functionality (e.g., ping, path MTU discovery).
-Alternative: Direct iptables (if UFW is disabled or you prefer raw rules)
-Bashsudo iptables -I INPUT -p icmp --icmp-type timestamp-request -j DROP
+Alternative:
+
+
+Direct iptables (if UFW is disabled or you prefer raw rules)
+
+
+sudo iptables -I INPUT -p icmp --icmp-type timestamp-request -j DROP
 sudo iptables -I INPUT -p icmp --icmp-type timestamp-reply -j DROP
+
+
 # Make persistent (Ubuntu uses iptables-persistent or netfilter-persistent)
-sudo apt install iptables-persistent   # if not installed
+
+
+sudo apt install iptables-persistent   # if not installed
 sudo netfilter-persistent save
+
+
 Verification
+
+
 After applying the rules, test from another host:
-Bash# Using nping (from nmap package)
+
+
+Using nping (from nmap package)
 nping --icmp --icmp-type timestamp <your-ubuntu-ip>
+
+
 
 # Or hping3
 sudo hping3 --icmp-ts <your-ubuntu-ip>
 You should now see no response or "filtered".
+
 Notes
 
 This change is safe — ICMP timestamp is almost never legitimately needed on modern networks.
