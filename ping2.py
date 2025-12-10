@@ -1,4 +1,4 @@
-#Just ping the devices from a txt file and then show only theip addresses, if it failes, it wont skip the result, it'll show if it wsa unable to resolve
+#Just ping the devices from a txt file and then show only theip addresses, if it fails, it wont skip the result, it'll show if it wsa unable to resolve
 
 import socket
 import sys
@@ -43,3 +43,4 @@ def main():
         print(ip)
 
 if __name__ == "__main__":
+    main()
