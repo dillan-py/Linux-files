@@ -1,0 +1,16 @@
+Linux:
+
+Cry0l1t3@htb[/htb]$ script 03-21-2021-0200pm-exploitation.log
+Cry0l1t3@htb[/htb]$ <ALL THE COMMANDS>
+Cry0l1t3@htb[/htb]$ exit
+
+Windows:
+
+Start-Transcript
+        powershell-session
+C:\> Start-Transcript -Path "C:\Pentesting\03-21-2021-0200pm-exploitation.log"
+
+Transcript started, output file is C:\Pentesting\03-21-2021-0200pm-exploitation.log
+
+C:\> ...SNIP...
+C:\> Stop-Transcript
