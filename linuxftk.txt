@@ -1,0 +1,54 @@
+Linux equivalent for FTK Imager is:
+ewfacquire 
+
+To install, what I know works:
+
+sudo apt update
+sudo apt install ewf-tools -y
+
+If that fails for any reason try the online solution:
+
+sudo apt update
+sudo apt install libewf-tools -y
+
+Flow:
+lsblk → find disks
+mount external
+ewfacquire source disk
+save to external
+verify image
+
+ Create the .E01 Image
+
+Understand this:
+
+Device      Meaning
+sda         Internal disk (TARGET — what you're imaging)
+sdb         External drive (WHERE you save image)
+
+Mount your external drive:
+
+Make a folder:
+sudo mkdir /mnt/external
+Now mount it:
+sudo mount /dev/sdb1 /mnt/external
+Now your external drive is accessible at:
+/mnt/external
+
+Run the following command, replacing /dev/sdb with the correct disk name:
+
+sudo ewfacquire /dev/sdx
+
+In the optinos it shows you, enter the correct output file path
+Ensure for .E01 to use the default 'encase6' which is default
+
+
+After it finishes, run:
+sudo ewfverify /mnt/external/case001.E01Show more lines
+This confirms:
+
+Image is not corrupted
+Hash matches original
+
+Safely unmount drive
+sudo umount /mnt/external
