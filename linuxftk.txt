@@ -39,7 +39,7 @@ Run the following command, replacing /dev/sdb with the correct disk name:
 
 sudo ewfacquire /dev/sdx
 
-In the optinos it shows you, enter the correct output file path
+In the optins it shows you, enter the correct output file path
 Ensure for .E01 to use the default 'encase6' which is default
 
 
