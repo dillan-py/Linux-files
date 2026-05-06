@@ -44,9 +44,9 @@ Ensure for .E01 to use the default 'encase6' which is default
 
 
 After it finishes, run:
-sudo ewfverify /mnt/external/case001.E01Show more lines
-This confirms:
+sudo ewfverify /mnt/external/case001.E01
 
+This confirms:
 Image is not corrupted
 Hash matches original
 
